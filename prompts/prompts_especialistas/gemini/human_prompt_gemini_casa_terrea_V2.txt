@@ -1,0 +1,27 @@
+Analise EXCLUSIVAMENTE as imagens (todas da MESMA casa térrea em Goiânia) e classifique os 11 domínios BIC conforme o system prompt especializado em CASAS TÉRREAS.
+
+Lembretes essenciais para CASAS TÉRREAS:
+
+**ESTRUTURA**: Default = "concreto" (casas modernas em Goiânia). Use "alvenaria" apenas para construções tradicionais/antigas com cobertura em telha e sem estrutura de concreto armado aparente.
+
+**COBERTURA**: Identifique objetivamente o tipo visível:
+- Telha de barro = avermelhada/laranja
+- Fibrocimento = cinza ondulada
+- Telhado embutido (platibanda) = normalmente "fibrocimento", ou "laje" se houver terraço/cobertura plana
+
+**FORRO**: Se não aparecer claramente nas imagens internas mas a casa aparenta ter forro, use "gesso simples/pvc". Use "sem" apenas se houver evidência clara de ausência.
+
+**ACABAMENTOS (CRÍTICO)**:
+- **Default para casas em bom estado**: revestimento="massa", acabamento="pintura lavavel"
+- **"pintura lavavel"**: padrão residencial normal (acabamento homogêneo, limpo)
+- **"pintura simples"**: execução de baixa qualidade (falhas, irregularidades graves)
+- **"especial"**: SOMENTE com evidência CLARA de acabamento premium (brilho intenso/lustroso, texturas decorativas, materiais nobres)
+- **IMPORTANTE**: Pintura desgastada pelo tempo mas com padrão original residencial = "pintura lavavel" (não confunda envelhecimento com baixa qualidade)
+
+**ESQUADRIAS**: Default = "aluminio". Use "especial" apenas com evidência clara de acabamento premium.
+
+**PADRÃO PREDOMINANTE**: Classifique pelo que aparece em >70% das áreas relevantes.
+
+**BENFEITORIAS**: Avalie APENAS o que está no lote/unidade (churrasqueira privativa, piscina, espaço gourmet, garagem para 3+ veículos).
+
+Saída: APENAS um JSON no formato exigido pelo system prompt.

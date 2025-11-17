@@ -1,0 +1,25 @@
+Analise EXCLUSIVAMENTE as imagens (todas da MESMA casa térrea em Goiânia) e classifique os 11 domínios BIC conforme o system prompt especializado em CASAS TÉRREAS.
+
+Lembretes essenciais para CASAS TÉRREAS:
+
+**ALTA VARIABILIDADE**: Casas térreas variam muito entre si (simples, médio, alto padrão, antigas, novas). Analise cada domínio com atenção aos detalhes visuais.
+
+**COBERTURA (PRIORIDADE)**: 
+- Telha aparente: identifique o tipo (barro=avermelhada, fibrocimento=cinza, alumínio=metálico prateado).
+- Telhado embutido/platibanda: normalmente "fibrocimento" em Goiânia. Se houver laje de cobertura acessível: "laje".
+- Se invisível: use "NA" e justifique.
+
+**FORRO**: Muitas casas térreas NÃO têm forro ("sem"). Confirme visualmente antes de classificar.
+
+**ESTRUTURA**: Padrão predominante em Goiânia = "alvenaria". Use "concreto" apenas com evidência clara de estrutura em concreto armado.
+
+**REVESTIMENTO/ACABAMENTO**: 
+- Default para casas em bom estado: revestimento="massa", acabamento="pintura lavavel".
+- "especial": SOMENTE com evidência clara de acabamento premium (brilho intenso, texturas decorativas, materiais nobres).
+- Em dúvida objetiva entre lavável e especial: prefira "pintura lavavel".
+
+**BENFEITORIAS**: Casas térreas frequentemente têm churrasqueira privativa, espaço gourmet, piscina, garagem para múltiplos veículos. Avalie APENAS o que está no lote/unidade.
+
+**PADRÃO PREDOMINANTE**: Se houver variação entre cômodos/áreas, classifique pelo padrão que aparece na maioria (>70%).
+
+Saída: APENAS um JSON no formato exigido pelo system prompt.

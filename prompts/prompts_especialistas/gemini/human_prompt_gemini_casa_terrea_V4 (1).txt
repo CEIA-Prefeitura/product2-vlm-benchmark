@@ -1,0 +1,44 @@
+Analise EXCLUSIVAMENTE as imagens (todas da MESMA casa térrea em Goiânia) e classifique os 11 domínios BIC conforme o system prompt.
+
+Lembretes essenciais para CASAS TÉRREAS:
+
+**ESTRUTURA**: Default = "concreto" (casas modernas em Goiânia). Use "alvenaria" apenas para construções tradicionais/antigas com telha e sem estrutura de concreto armado.
+
+**COBERTURA**: Identifique objetivamente:
+- Telha de barro = avermelhada
+- Fibrocimento = cinza ondulada  
+- Telhado embutido = "fibrocimento" (padrão), ou "laje" se houver terraço
+
+**INSTALAÇÃO ELÉTRICA**: Observe VISUALMENTE - "embutida", "semi embutida" (comum em casas térreas - canaletas aparentes), ou "externa".
+
+**REVESTIMENTO EXTERNO**: Padrão para casas em bom estado = "massa". Use "especial" apenas com evidência clara de materiais nobres.
+
+**PADRÃO PREDOMINANTE**: Classifique pelo que aparece em >70% das áreas relevantes.
+
+**BENFEITORIAS**: Avalie APENAS o que está no lote/unidade (churrasqueira privativa, piscina, espaço gourmet, garagem 3+ veículos).
+
+**ACABAMENTOS**: "pintura lavavel" é o default residencial. Use "especial" SOMENTE com evidência clara de brilho intenso/texturas decorativas.
+
+# SAÍDA — FORMATO OBRIGATÓRIO (APENAS UM JSON)
+
+```json
+{
+    "Estrutura": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Esquadrias": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Piso": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Forro": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Instalação Elétrica": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Instalação Sanitária": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Revestimento Interno": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Acabamento Interno": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Revestimento Externo": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Acabamento Externo": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Cobertura": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Benfeitorias": ["item_visivel_da_lista_de_caracteristicas_1", "item_visivel_da_lista_de_caracteristicas_2", ...],
+    "Tipo de Imóvel": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Explicacao": "String única. Justifique CADA UMA das 11 primeiras classificações (Estrutura a Cobertura) com base em detalhes específicos e observáveis nas imagens. Seja conciso. Exemplo: 'Estrutura: Concreto, inferido pela presença de vigas robustas e laje de cobertura. Esquadrias: Alumínio, identificado pelo perfil metálico e design das janelas. ...'",
+    "Descricao": "String única. Descrição geral e objetiva do imóvel e seu entorno imediato visível nas imagens (entre 50 e 100 palavras). Inclua o estado de conservação aparente e elementos contextuais relevantes (ex: tipo de rua, vegetação próxima, outras construções vizinhas se visíveis)."
+}
+```
+
+Não inclua nada fora do JSON.

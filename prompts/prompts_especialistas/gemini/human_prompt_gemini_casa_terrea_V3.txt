@@ -1,0 +1,38 @@
+Analise EXCLUSIVAMENTE as imagens (todas da MESMA casa térrea em Goiânia) e classifique os 11 domínios BIC conforme o system prompt especializado em CASAS TÉRREAS.
+
+Lembretes essenciais para CASAS TÉRREAS:
+
+**ESTRUTURA**: Default = "concreto" (casas modernas). Use "alvenaria" apenas para construções tradicionais/antigas com telha e sem estrutura de concreto armado.
+
+**COBERTURA**: Identifique objetivamente:
+- Telha de barro = avermelhada
+- Fibrocimento = cinza ondulada
+- Telhado embutido = normalmente "fibrocimento", ou "laje" se houver terraço
+
+**INSTALAÇÃO ELÉTRICA (CRÍTICO - NÃO ASSUMA)**: 
+- Observe VISUALMENTE as imagens
+- "embutida" = tomadas/interruptores sem conduítes aparentes
+- "semi embutida" = canaletas/conduítes parcialmente aparentes (COMUM em casas térreas)
+- "externa" = fiação totalmente aparente
+- NÃO assuma "embutida" se não houver evidência clara
+
+**FORRO (CRÍTICO - CLASSIFICAR APENAS O VISÍVEL)**:
+- Se o teto/forro NÃO aparecer claramente nas imagens: use "NA"
+- "sem" = ausência clara de forro (telha/estrutura aparente)
+- NÃO assuma que há forro se não estiver visível
+
+**ACABAMENTO EXTERNO (CRÍTICO - AVALIE O ESTADO)**:
+- Bom estado/preservada = "pintura lavavel"
+- Desgastada/descascada/manchada = "pintura simples"  
+- Textura decorativa evidente (grafiato, rústico) = "especial"
+- SIMPLES: Avalie o estado ATUAL da pintura
+
+**ESQUADRIAS**: 
+- Classifique pelo material PREDOMINANTE (>70%)
+- Se houver mistura (janelas alumínio + portão ferro), considere o que predomina nas aberturas principais
+
+**ACABAMENTO INTERNO**: Default = "pintura lavavel". Use "especial" SOMENTE com brilho intenso evidente ou técnica decorativa clara.
+
+**PADRÃO PREDOMINANTE**: Classifique pelo que aparece em >70% das áreas relevantes.
+
+Saída: APENAS um JSON no formato exigido pelo system prompt.
