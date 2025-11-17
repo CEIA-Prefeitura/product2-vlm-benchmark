@@ -1,6 +1,6 @@
 # Projeto de Benchmark e Avaliação de Modelos VLM para Análise de Imóveis
 
-Este projeto fornece um pipeline completo para avaliar o desempenho de Modelos de Linguagem de Visão (VLMs), como as famílias Gemini, Qwen, Gemma e Llava, em uma tarefa de análise técnica de imagens de imóveis. O pipeline consiste em três etapas principais:
+Este projeto fornece um pipeline completo para avaliar o desempenho de Modelos de Linguagem de Visão (VLMs), como as famílias Gemini, Qwen e Gemma, em uma tarefa de análise técnica de imagens de imóveis. O pipeline consiste em três etapas principais:
 1.  **Geração:** Executa um ou mais modelos VLM com diferentes configurações para analisar conjuntos de imagens de imóveis e gerar saídas estruturadas em formato JSON.
 2.  **Avaliação:** Compara as respostas JSON geradas com um dataset de ground truth para calcular métricas de desempenho detalhadas (accuracy, F1-score, etc.).
 3.  **Relatório:** Agrega os resultados de múltiplas execuções de avaliação para criar relatórios sumarizados em formato CSV e tabelas LaTeX.
