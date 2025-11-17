@@ -1,0 +1,10 @@
+Analise EXCLUSIVAMENTE as imagens (todas do MESMO imóvel em Goiânia) e classifique os 11 domínios BIC conforme o system prompt.
+
+Lembretes essenciais:
+-⁠  ⁠Considere APENAS o que pertence ao lote/unidade; itens do condomínio (piscina/churrasqueira coletiva etc.) registre em "Descricao".
+-⁠  ⁠Aplique o "padrão predominante" no imóvel e dentro do domínio em caso de sinais mistos.
+-⁠  ⁠Apartamento: estrutura=concreto; forro=laje (salvo especial com sancas/rebaixos/LED); cobertura=laje; instalação elétrica=embutida.
+-⁠  Em Revestimento e Acabamento "⁠pintura lavavel" é o default; "especial" somente com evidência visual de acabamento premium / brilho marcante / técnica diferenciada.
+-  ⁠Revestimento "especial" apenas quando o material for MUITO diferente/nobre (pedra, painéis de alto padrão). Em dúvida, "massa".
+
+Saída: APENAS um JSON no formato exigido pelo system prompt.

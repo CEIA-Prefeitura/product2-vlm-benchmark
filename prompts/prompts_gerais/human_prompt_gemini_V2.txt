@@ -1,0 +1,99 @@
+Analise as imagens do imóvel em Goiânia aplicando as regras específicas da Lei Complementar nº 344/2021 e retorne **EXCLUSIVAMENTE UM JSON** seguindo estas diretrizes técnicas:
+
+## METODOLOGIA DE ANÁLISE
+
+### PASSO 1: IDENTIFICAÇÃO DO PADRÃO GERAL
+- Analise TODAS as imagens para inferir o padrão construtivo geral do imóvel
+- Identifique sinais de alto/médio/baixo padrão antes de classificar itens individuais
+- Use este padrão para resolver ambiguidades
+
+### PASSO 2: EXTRAÇÃO DE ATRIBUTOS VISUAIS GRANULARES
+
+**Para PISOS:**
+- Estime dimensões dos ladrilhos (30x30cm, 60x60cm, 80x80cm+)
+- Observe espessura dos rejuntes (largos >0.8cm vs "juntinha seca")
+- Avalie textura e acabamento (brilho, rugosidade)
+- **REGRA**: Dimensões ≥60x60cm + rejuntes finos = "Especial"
+
+**Para FORROS:**
+- Identifique material base (laje, madeira, gesso)
+- Procure por: sancas, iluminação embutida, designs intrincados
+- **REGRA AVANÇADA**: Cobertura laje → forro laje (se não há especial); sanca/rebaixado → especial
+- **REGRA**: Qualquer design elaborado ou material não básico = "Especial"
+
+**Para PINTURA:**
+- Avalie presença/ausência de brilho na superfície
+- **REGRA AVANÇADA**: Brilho intenso → especial; qualquer brilho → lavável; fosca → simples
+
+**Para ESQUADRIAS:**
+- Identifique material predominante (ferro, alumínio, madeira, vidro)
+- **REGRA AVANÇADA**: Blindex/vidro temperado/pintura premium → especial; dúvida metal vs alumínio → alumínio
+
+**Para INSTALAÇÕES SANITÁRIAS:**
+- **REGRA AVANÇADA**: Lavabo (pia + vaso) → interna; completa = lavabo + pia + vaso + chuveiro; múltiplos → mais de uma
+
+### PASSO 3: APLICAÇÃO DE LÓGICA CONDICIONAL
+
+**SE** item ambíguo entre categorias de diferentes pontuações:
+- **E** estimativa de padrão geral não muda com escolha de menor pontuação
+- **ENTÃO** classifique na categoria de menor pontuação
+
+**SE** item não identificável visualmente:
+- **E** padrão geral indica alto padrão (múltiplos itens "Especial")
+- **ENTÃO** classifique item como padrão correspondente (frequentemente "Especial")
+
+### PASSO 4: PONTUAÇÃO DE CONFIANÇA
+- **90-100%**: Identificação clara e inequívoca
+- **70-89%**: Identificação provável com pequena margem de dúvida
+- **50-69%**: Identificação incerta, requer contexto adicional
+- **< 50%**: Não identificável visualmente = "NA"
+
+## CATEGORIAS "ESPECIAL" - CRITÉRIOS VISUAIS
+
+### QUANDO CLASSIFICAR COMO "ESPECIAL":
+- **Material de alto custo** não contemplado nas categorias básicas
+- **Acabamentos sofisticados**: texturas complexas, padrões elaborados
+- **Instalações premium**: iluminação embutida, automação visível
+- **Design diferenciado**: elementos arquitetônicos únicos
+- **Múltiplos sinais de luxo** na mesma imagem
+
+### SINAIS VISUAIS DE ALTO PADRÃO:
+- Móveis e decoração sofisticados
+- Acabamentos uniformes e bem executados
+- Materiais com brilho/reflexo característico de qualidade
+- Instalações modernas e bem integradas
+- Paisagismo elaborado (para externas)
+
+## ESTRUTURA DO JSON OBRIGATÓRIA:
+
+```json
+{
+    "Estrutura": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Esquadrias": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Piso": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Forro": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Instalação Elétrica": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Instalação Sanitária": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Revestimento Interno": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Acabamento Interno": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Revestimento Externo": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Acabamento Externo": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Cobertura": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Benfeitorias": ["item_visivel_da_lista_de_caracteristicas_1", "item_visivel_da_lista_de_caracteristicas_2", ...],
+    "Tipo de Imóvel": "VALOR_DA_LISTA_DE_CARACTERISTICAS_OU_NA",
+    "Explicacao": "String única. Justifique CADA UMA das 11 primeiras classificações (Estrutura a Cobertura) com base em detalhes específicos e observáveis nas imagens. Seja conciso. Exemplo: 'Estrutura: Concreto, inferido pela presença de vigas robustas e laje de cobertura. Esquadrias: Alumínio, identificado pelo perfil metálico e design das janelas. ...'",
+    "Descricao": "String única. Descrição geral e objetiva do imóvel e seu entorno imediato visível nas imagens (entre 50 e 100 palavras). Inclua o estado de conservação aparente e elementos contextuais relevantes (ex: tipo de rua, vegetação próxima, outras construções vizinhas se visíveis)."
+    }
+
+DIRETRIZES CRÍTICAS:
+
+Use "NA" para confiança < 70% (pontuação = 0)
+Aplique regras SE-ENTÃO específicas e regras avançadas
+Documente raciocínio para categoria "Especial"
+Seja específico em dimensões e características
+Relacione classificações ao padrão geral inferido
+Use APENAS opções válidas das tabelas fornecidas
+**OBRIGATÓRIO**: Inclua pontuação numérica correspondente para cada classificação
+**CALCULE**: pontuacao_total como soma de todas as pontuações individuais
+
+FOQUE na extração de atributos granulares e aplicação consistente das regras de negócio estabelecidas, incluindo as novas regras avançadas.
