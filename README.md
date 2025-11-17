@@ -12,16 +12,17 @@ O projeto está organizado da seguinte forma:
 ```
 product2-vlm-benchmark/
 |
-├── benchmark_gemini_multimodelsV2.py    # Script principal para GERAÇÃO sequencial de classificações
-├── benchmark_ollama_multimodelsV2.py    # Script principal para GERAÇÃO sequencial de classificações
-├── benchmark_gemini_multimodelsV2_async.py    # Script principal para GERAÇÃO assíncrona de classificações
-├── benchmark_ollama_multimodelsV2_async.py    # Script principal para GERAÇÃO assíncrona de classificações
-├── benchmark_gemini_multimodels_caracteristica.py    # Script principal para GERAÇÃO sequencial de classificações especialistas
-├── benchmark_ollama_multimodels_caracteristica.py    # Script principal para GERAÇÃO sequencial de classificações especialistas
-├── benchmark_gemini_multimodels_caracteristica_async.py    # Script principal para GERAÇÃO assíncrona de classificações especialistas
-├── gemini_connector.py                # Conector Sequencial para a API Gemini
-├── ollama_connector.py                # Conector Sequencial para a API Ollama
-├── gemini_connector_async.py          # Conector Assíncrono para a API Gemini
+├── src/
+|   ├── benchmark_gemini_multimodelsV2.py    # Script principal para GERAÇÃO sequencial de classificações
+|   ├── benchmark_ollama_multimodelsV2.py    # Script principal para GERAÇÃO sequencial de classificações
+|   ├── benchmark_gemini_multimodelsV2_async.py    # Script principal para GERAÇÃO assíncrona de classificações
+|   ├── benchmark_ollama_multimodelsV2_async.py    # Script principal para GERAÇÃO assíncrona de classificações
+|   ├── benchmark_gemini_multimodels_caracteristica.py    # Script principal para GERAÇÃO sequencial de classificações especialistas
+|   ├── benchmark_ollama_multimodels_caracteristica.py    # Script principal para GERAÇÃO sequencial de classificações especialistas
+|   ├── benchmark_gemini_multimodels_caracteristica_async.py    # Script principal para GERAÇÃO assíncrona de classificações especialistas
+|   ├── gemini_connector.py                # Conector Sequencial para a API Gemini
+|   ├── ollama_connector.py                # Conector Sequencial para a API Ollama
+|   └── gemini_connector_async.py          # Conector Assíncrono para a API Gemini
 |
 ├── utils/
 │   ├── helpers.py                          # Funções auxiliares (ex: get_images_from_directory)
