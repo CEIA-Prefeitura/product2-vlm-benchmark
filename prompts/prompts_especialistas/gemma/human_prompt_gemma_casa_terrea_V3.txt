@@ -1,0 +1,38 @@
+Analise todas as imagens de uma **casa térrea localizada em Goiânia** e retorne **UM ÚNICO OBJETO JSON VÁLIDO E COMPLETO**, seguindo **exclusivamente** as opções permitidas e as regras definidas no System Prompt. Sua resposta deve conter **APENAS** este JSON
+
+Siga estas regras com MÁXIMA PRECISÃO:
+
+1.  **Fonte de Dados:** Para cada campo, utilize **EXCLUSIVAMENTE** as opções de valores fornecidas no seu prompt de sistema.
+2.  **Estrutura JSON:** Preencha a estrutura JSON fornecida abaixo.
+    ```json
+    {
+        "Estrutura": "VALOR_DA_LISTA",
+        "Esquadrias": "VALOR_DA_LISTA",
+        "Piso": "VALOR_DA_LISTA",
+        "Forro": "VALOR_DA_LISTA",
+        "Instalação Elétrica": "VALOR_DA_LISTA",
+        "Instalação Sanitária": "VALOR_DA_LISTA",
+        "Revestimento Interno": "VALOR_DA_LISTA",
+        "Acabamento Interno": "VALOR_DA_LISTA",
+        "Revestimento Externo": "VALOR_DA_LISTA",
+        "Acabamento Externo": "VALOR_DA_LISTA",
+        "Cobertura": "VALOR_DA_LISTA",
+        "Benfeitorias": ["item_visivel_1", ...],
+        "Tipo de Imóvel": "VALOR_DA_LISTA",
+        "Explicacao": "String única com justificativas concisas para cada classificação.",
+        "Descricao": "String única com um resumo geral do imóvel (2-3 frases)."
+    }
+    ```
+
+3.  Observação de rótulos:
+    - ⁠"NA" é usado somente quando NÃO FOR POSSÍVEL DETERMINAR pelo conjunto de fotos (falta de evidência).  
+    -⁠ "sem" é um rótulo válido quando a AUSÊNCIA é constatada visualmente (ex.: sem forro).  
+    - Normalize sempre em minúsculo, sem acentos; use os valores exatamente como acima.
+
+**Instruções adicionais:**
+
+1. Use apenas **um único valor** para cada característica, exatamente como listado nas opções do System Prompt.
+2. Se o item não puder ser identificado com segurança, utilize `"NA"`.
+3. As **Benfeitorias** devem conter apenas os itens claramente visíveis.
+4. Todas as palavras devem estar **em minúsculas** e sem acentos.
+5. A resposta deve conter **somente o JSON**, sem comentários, títulos ou explicações fora do objeto.

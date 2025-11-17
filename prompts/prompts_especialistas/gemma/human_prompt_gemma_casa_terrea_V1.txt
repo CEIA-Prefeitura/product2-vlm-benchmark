@@ -1,0 +1,26 @@
+Analise TODAS as imagens de uma CASA TÉRREA localizada em Goiânia e retorne **UM ÚNICO OBJETO JSON VÁLIDO E COMPLETO**, conforme o formato abaixo.  
+Sua resposta deve conter **APENAS** o JSON final (sem texto adicional).
+
+- Cada campo deve conter **exatamente um valor da lista permitida** definida no system prompt.  
+- Não use combinações ("madeira e alumínio") nem valores inexistentes ("médio", "textura e pintura").  
+- Caso não seja possível determinar o valor com clareza, utilize "NA".
+
+### FORMATO OBRIGATÓRIO
+```json
+{
+    "Estrutura": "valor_da_lista",
+    "Esquadrias": "valor_da_lista",
+    "Piso": "valor_da_lista",
+    "Forro": "valor_da_lista",
+    "Instalação Elétrica": "valor_da_lista",
+    "Instalação Sanitária": "valor_da_lista",
+    "Revestimento Interno": "valor_da_lista",
+    "Acabamento Interno": "valor_da_lista",
+    "Revestimento Externo": "valor_da_lista",
+    "Acabamento Externo": "valor_da_lista",
+    "Cobertura": "valor_da_lista",
+    "Benfeitorias": ["item_visivel_1", "item_visivel_2"],
+    "Tipo de Imóvel": "valor_da_lista",
+    "Explicacao": "Justifique cada classificação brevemente com base em elementos observáveis nas imagens (materiais, texturas, tipo de telha, etc.).",
+    "Descricao": "Resumo técnico e objetivo do imóvel (2–3 frases) descrevendo padrão construtivo, conservação e entorno visível."
+}

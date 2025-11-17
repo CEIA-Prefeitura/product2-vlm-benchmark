@@ -1,0 +1,29 @@
+Analise todas as imagens de uma **casa térrea localizada em Goiânia** e preencha **um único objeto JSON completo e válido**, seguindo **exclusivamente** as opções permitidas e as regras definidas no System Prompt.
+
+Sua resposta deve conter **apenas** o JSON final — sem explicações antes ou depois — no formato exato abaixo:
+
+{
+"Estrutura": "valor_da_lista",
+"Esquadrias": "valor_da_lista",
+"Piso": "valor_da_lista",
+"Forro": "valor_da_lista",
+"Instalação Elétrica": "valor_da_lista",
+"Instalação Sanitária": "valor_da_lista",
+"Revestimento Interno": "valor_da_lista",
+"Acabamento Interno": "valor_da_lista",
+"Revestimento Externo": "valor_da_lista",
+"Acabamento Externo": "valor_da_lista",
+"Cobertura": "valor_da_lista",
+"Benfeitorias": ["itens_visiveis"],
+"Tipo de Imóvel": "valor_da_lista",
+"Explicacao": "justifique de forma objetiva cada classificação, com base em evidências visuais claras das imagens (exemplo: tipo de telha, material do piso, textura das paredes, tipo de esquadrias etc.).",
+"Descricao": "apresente um resumo técnico e geral do imóvel, em 2 ou 3 frases, mencionando o padrão construtivo, o estado de conservação e o contexto visível (exemplo: área externa, entorno, acabamento geral)."
+}
+
+**Instruções adicionais:**
+
+1. Use apenas **um único valor** para cada característica, exatamente como listado nas opções do System Prompt.
+2. Se o item não puder ser identificado com segurança, utilize `"NA"`.
+3. As **Benfeitorias** devem conter apenas os itens claramente visíveis.
+4. Todas as palavras devem estar **em minúsculas** e sem acentos.
+5. A resposta deve conter **somente o JSON**, sem comentários, títulos ou explicações fora do objeto.

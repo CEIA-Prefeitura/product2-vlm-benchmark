@@ -1,0 +1,136 @@
+Sua tarefa é analisar as imagens desta CASA TÉRREA e retornar **UM ÚNICO OBJETO JSON VÁLIDO E COMPLETO**. Sua resposta deve conter **APENAS** este JSON.
+
+Siga estas regras com MÁXIMA PRECISÃO:
+
+1. **Fonte de Dados:** Para cada campo, utilize **EXCLUSIVAMENTE** as opções de valores fornecidas no seu prompt de sistema.
+
+2. **Estrutura JSON:** Preencha a estrutura JSON fornecida abaixo.
+```json
+{
+    "Estrutura": "VALOR_DA_LISTA",
+    "Esquadrias": "VALOR_DA_LISTA",
+    "Piso": "VALOR_DA_LISTA",
+    "Forro": "VALOR_DA_LISTA",
+    "Instalação Elétrica": "VALOR_DA_LISTA",
+    "Instalação Sanitária": "VALOR_DA_LISTA",
+    "Revestimento Interno": "VALOR_DA_LISTA",
+    "Acabamento Interno": "VALOR_DA_LISTA",
+    "Revestimento Externo": "VALOR_DA_LISTA",
+    "Acabamento Externo": "VALOR_DA_LISTA",
+    "Cobertura": "VALOR_DA_LISTA",
+    "Benfeitorias": ["item_visivel_1", "item_visivel_2"],
+    "Tipo de Imóvel": "residencial",
+    "Explicacao": "String única com justificativas concisas para cada classificação.",
+    "Descricao": "String única com um resumo geral da casa térrea (2-3 frases)."
+}
+```
+
+3. **Observação de rótulos:**
+   - "NA" é usado somente quando NÃO FOR POSSÍVEL DETERMINAR pelo conjunto de fotos (falta de evidência).
+   - "sem" é um rótulo válido quando a AUSÊNCIA é constatada visualmente (ex.: sem forro, estrutura do telhado aparente).
+   - **Normalize sempre em minúsculo, sem acentos; use os valores exatamente como acima.**
+
+# REGRAS ESPECÍFICAS PARA CASAS TÉRREAS
+
+## A) ESTRUTURA
+- **Padrão mais comum:** "concreto" (blocos cerâmicos/concreto com estrutura de pilares e vigas)
+- **"mista":** quando houver combinação clara de alvenaria + elementos metálicos (cobertura metálica em garagem, estrutura mista visível)
+- **"alvenaria":** quando a estrutura for de alvenaria de vedação SEM estrutura de concreto armado, geralmente, aparece em construções tradicionais/antigas
+- **Evidências:** observe paredes externas, pilares aparentes, tipo de construção
+- **Em dúvida entre alvenaria e mista:** priorize "alvenaria" se os elementos metálicos forem minoritários
+
+## B) COBERTURA (CRÍTICO PARA CASAS TÉRREAS)
+- **Telhado VISÍVEL nas imagens:**
+  - Telhas cerâmicas avermelhadas → "telha de barro"
+  - Telhas acinzentadas/onduladas → "fibrocimento"
+  - Telhas metálicas → "aluminio" ou "zinco" (conforme cor/aparência)
+- **Telhado EMBUTIDO (platibanda/beiral oculto):**
+  - Geralmente indica → "fibrocimento" (inferência por padrão construtivo em Goiânia)
+  - Se houver total incerteza sobre o material, use "NA"
+- **Laje impermeabilizada sem telhas (casa moderna):** → "laje"
+- **Nenhuma evidência de telhado em nenhum ângulo:** → "NA"
+
+## C) FORRO
+- Casas térreas são muito variáveis:
+  - **"gesso simples/pvc":** padrão comum, forro liso branco
+  - **"madeira":** forro de madeira aparente (lambris, ripado)
+  - **"sem":** quando se vê a estrutura do telhado (caibros, ripas) - construção simples/inacabada
+  - **"especial":** sancas, rebaixos com iluminação embutida, gesso trabalhado
+  - **"laje":** apenas se for laje aparente/sem telhado acima
+- Se diferentes ambientes têm forros distintos, use o predominante em áreas sociais
+
+## D) PISO
+- **"ceramica":** o mais comum (qualidade varia de básica a boa)
+- **"especial/porcelanato":** casas de padrão médio/alto (porcelanato retificado, acabamento superior)
+- **"cimento":** queimado/polido (estilo industrial ou áreas de serviço/garagem)
+- Considere o padrão das áreas sociais (sala/quartos); se garagem/serviço têm piso diferente, não influencie na classificação principal
+
+## E) ESQUADRIAS
+- Em Goiânia, **"aluminio"** é predominante mesmo em casas térreas
+- **"ferro":** casas mais antigas ou construções simples (grades, portões de ferro pintado)
+- **"especial":** esquadrias de alto padrão (perfis pretos sofisticados, blindex especial, madeira nobre)
+- Observe janelas, portas e portões; use o padrão predominante
+
+## F) REVESTIMENTO INTERNO
+- **Casas simples/populares:** "reboco" (apenas reboco, sem massa corrida)
+- **Padrão médio (MAIORIA):** "massa" (reboco + massa corrida preparada para pintura)
+- **Padrão médio/alto:** "material ceramico" em cozinha/banheiros (revestimento cerâmico nas paredes)
+- **Alto padrão:** "especial" (pedras naturais, painéis sofisticados) - EXIGE evidência clara
+- Baseie-se nas áreas sociais principais (sala, quartos)
+
+## G) ACABAMENTO INTERNO
+- **"pintura simples":** execução básica, fosca, possíveis irregularidades
+- **"pintura lavavel":** padrão comum do mercado, acabamento homogêneo (fosco ou acetinado)
+- **"especial":** pintura premium com brilho notório, texturas decorativas, efeitos especiais - EXIGE evidência visual clara
+- **"caiacao":** muito raro, apenas em construções muito simples/rurais
+- **Em dúvida entre pintura simples e lavavel:** avalie a qualidade geral da casa; se média/boa → "pintura lavavel"
+
+## H) REVESTIMENTO EXTERNO
+- **"reboco":** construções básicas (apenas reboco, sem massa ou pintura de qualidade)
+- **"massa":** padrão mais comum em Goiânia (reboco + massa + pintura)
+- **"material ceramico":** pastilhas cerâmicas, revestimento cerâmico na fachada (padrão médio/alto)
+- **"especial":** pedras naturais, painéis sofisticados - EXIGE evidência inequívoca
+- Observe a fachada principal; se há mistura (parte textura/parte pintura), use o predominante
+
+## I) ACABAMENTO EXTERNO
+- Segue lógica similar ao interno:
+  - **"pintura simples":** básica, possível descascamento
+  - **"pintura lavavel":** padrão comum, boa qualidade
+  - **"especial":** texturas premium, acabamentos diferenciados - EXIGE evidência
+- Deve ser coerente com o revestimento externo (especial geralmente acompanha especial)
+
+## J) INSTALAÇÕES
+- **Elétrica:**
+  - "embutida": padrão mais comum (tomadas e interruptores embutidos, fiação oculta)
+  - "semi embutida" ou "externa": construções simples/antigas (fiação aparente, eletrodutos externos)
+- **Sanitária:**
+  - "interna": um banheiro interno básico
+  - "completa": banheiro(s) bem equipado(s) com box, louças de qualidade
+  - "mais de uma": se identificar 2+ banheiros nas imagens
+  - Conte os banheiros visíveis nas fotos
+
+## K) BENFEITORIAS (ATENÇÃO ESPECIAL)
+- **Churrasqueira:**
+  - "churrasqueira_privativa": apenas a churrasqueira (no quintal/área externa da casa)
+  - "espaco_gourmet": infraestrutura completa (churrasqueira + pia + balcão + cobertura integrada)
+- **"piscina":** se visível no terreno da casa
+- **"mais_de_uma_suite":** se identificar múltiplos quartos com banheiro privativo
+- **"mais_de_dois_box_de_garagem":** garagem para 3+ veículos
+- **"lavabo":** banheiro social pequeno (sem chuveiro), geralmente próximo à sala
+- **"energia_solar":** painéis solares no telhado
+- **Não confunda com itens de condomínio:** se a casa estiver em condomínio e houver piscina/churrasqueira coletiva, NÃO liste como benfeitoria da casa
+
+# PRINCÍPIO FUNDAMENTAL
+- **Padrão predominante:** Se houver variação entre ambientes, classifique pelo que aparece na maioria dos cômodos principais
+- **Evidências visuais explícitas:** Baseie TODAS as classificações no que é visível nas imagens
+- **Casas térreas são variáveis:** Não assuma padrão alto ou baixo sem evidência; analise cuidadosamente cada característica
+
+# POLÍTICA DE "NA"
+- Use "NA" apenas quando NÃO FOR POSSÍVEL determinar com razoável certeza pela análise das imagens
+- Se houver evidência parcial mas suficiente para inferir (ex: telhado embutido → fibrocimento), faça a classificação
+- Seja criterioso: prefira classificar com base em evidências visuais do que usar "NA" excessivamente
+
+# SAÍDA — FORMATO OBRIGATÓRIO (APENAS UM JSON)
+Sua resposta deve começar com `{` e terminar com `}`. Sem texto adicional antes ou depois.
+
+Analise todas as imagens em conjunto, considere as especificidades de casas térreas e seja preciso.

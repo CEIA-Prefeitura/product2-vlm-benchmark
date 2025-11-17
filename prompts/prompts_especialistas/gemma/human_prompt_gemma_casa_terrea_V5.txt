@@ -1,0 +1,58 @@
+Sua tarefa é analisar as imagens desta CASA TÉRREA e retornar **UM ÚNICO OBJETO JSON VÁLIDO E COMPLETO**. Sua resposta deve conter **APENAS** este JSON.
+
+Siga estas regras com MÁXIMA PRECISÃO:
+
+1. **Fonte de Dados:** Para cada campo, utilize **EXCLUSIVAMENTE** as opções de valores fornecidas no seu prompt de sistema.
+
+2. **Estrutura JSON:** Preencha a estrutura JSON fornecida abaixo.
+```json
+{
+    "Estrutura": "VALOR_DA_LISTA",
+    "Esquadrias": "VALOR_DA_LISTA",
+    "Piso": "VALOR_DA_LISTA",
+    "Forro": "VALOR_DA_LISTA",
+    "Instalação Elétrica": "VALOR_DA_LISTA",
+    "Instalação Sanitária": "VALOR_DA_LISTA",
+    "Revestimento Interno": "VALOR_DA_LISTA",
+    "Acabamento Interno": "VALOR_DA_LISTA",
+    "Revestimento Externo": "VALOR_DA_LISTA",
+    "Acabamento Externo": "VALOR_DA_LISTA",
+    "Cobertura": "VALOR_DA_LISTA",
+    "Benfeitorias": ["item_visivel_1", "item_visivel_2"],
+    "Tipo de Imóvel": "residencial",
+    "Explicacao": "String única com justificativas concisas para cada classificação.",
+    "Descricao": "String única com um resumo geral da casa térrea (2-3 frases)."
+}
+```
+
+3. **Observação de rótulos:**
+   - "NA" é usado somente quando NÃO FOR POSSÍVEL DETERMINAR pelo conjunto de fotos (falta de evidência).
+   - "sem" é um rótulo válido quando a AUSÊNCIA é constatada visualmente (ex.: sem forro, estrutura do telhado aparente).
+   - **Normalize sempre em minúsculo, sem acentos; use os valores exatamente como acima.**
+
+# REGRAS GERAIS (MUITO IMPORTANTES)
+
+1) **Padrão predominante:** Se houver diferentes características em vários ambientes, classifique pelo padrão que aparece na maioria das áreas sociais principais (sala, quartos, cozinha).
+
+2) **Avalie apenas o lote:** Itens que pertencem ao condomínio (piscina coletiva, churrasqueira coletiva, etc.) NÃO devem ser classificados como benfeitorias desta casa.
+
+3) **Benfeitorias - Diferenciação importante:**
+   - "churrasqueira_privativa": apenas churrasqueira no terreno da casa
+   - "espaco_gourmet": área com churrasqueira + pia + balcão integrado
+   - "mais_de_uma_suite": quando identificar múltiplos quartos com banheiro privativo
+   - "lavabo": banheiro social pequeno (sem chuveiro) próximo às áreas sociais
+
+4) **Princípio Fundamental:** Baseie **TODAS** as classificações em evidências visuais explícitas nas imagens fornecidas.
+
+# OBSERVAÇÕES PARA CASAS TÉRREAS
+
+- **Estrutura:** Geralmente "concreto" em Goiânia
+- **Cobertura:** Classifique pelo material visível das telhas; se não visualizar, use "NA"
+- **Forro:** Pode variar (laje, gesso simples/pvc, madeira, sem forro); observe o que aparece nas imagens
+- **Ambientes diferentes:** Use o padrão predominante das áreas sociais
+
+# SAÍDA — FORMATO OBRIGATÓRIO (APENAS UM JSON)
+
+Sua resposta deve começar com `{` e terminar com `}`. Sem texto adicional antes ou depois.
+
+Analise todas as imagens em conjunto e seja preciso.
