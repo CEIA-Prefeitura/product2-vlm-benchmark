@@ -24,7 +24,6 @@ product2-vlm-benchmark/
 ├── gemini_connector_async.py          # Conector Assíncrono para a API Gemini
 |
 ├── utils/
-│   ├── __init__.py                         # Torna 'utils' um pacote Python
 │   ├── helpers.py                          # Funções auxiliares (ex: get_images_from_directory)
 │   ├── metrics_eval.py                     # Funções para cálculo de métricas (accuracy, F1, etc.)
 │   ├── evaluate_results.py                 # Script para AVALIAÇÃO (lê a saída da geração)
